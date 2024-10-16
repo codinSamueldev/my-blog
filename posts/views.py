@@ -8,17 +8,11 @@ def personal_view(request):
     return render(request, 'personal/personal.html', {'personal_posts': personal_posts})
 
 
-def personal_content(request, title):
-    content = PostModel.objects.get(title__contains=title)
-    return render(request, 'personal/personal_content.html', {'content': content})
-
-
 def spirituality_view(request):
     spirituality_posts = PostModel.objects.all().filter(topic="spirituality")
     return render(request, 'spirituality/spirituality.html', {'spirituality_posts': spirituality_posts})
 
 
-def spirituality_content(request, title):
+def personalspiritual_content(request, title, template_name):
     content = PostModel.objects.get(title__contains=title)
-    return render(request, 'spirituality/spirituality_content.html', {'content': content})
-
+    return render(request, template_name, {'content': content})

@@ -1,11 +1,11 @@
 from django.urls import path
 
-from .views import personal_view, personal_content, spirituality_view, spirituality_content
+from . import views
 
 urlpatterns = [
-   path('personal/', personal_view, name="personal"),
-   path('personal/<str:title>', personal_content, name="personal_content"),
-   path('espiritualidad/', spirituality_view, name="spirituality"),
-   path('espiritualidad/<str:title>', spirituality_content, name="spirituality_content"),
+   path('personal/', views.personal_view, name="personal"),
+   path('personal/<str:title>', views.personalspiritual_content, {'template_name': 'personal/personal_content.html'}, name="personal_content"),
+   path('espiritualidad/', views.spirituality_view, name="spirituality"),
+   path('espiritualidad/<str:title>', views.personalspiritual_content, {'template_name': 'spirituality/spirituality_content.html'}, name="spirituality_content"),
 ]
 
